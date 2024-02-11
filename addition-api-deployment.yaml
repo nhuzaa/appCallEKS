@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: addition-api
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: addition-api
+  template:
+    metadata:
+      labels:
+        app: addition-api
+    spec:
+      containers:
+      - name: addition-api
+        image: 578730255773.dkr.ecr.us-east-1.amazonaws.com/addition-api-loyalist:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "128Mi"
+          requests:
+            cpu: "250m"
+            memory: "64Mi"
